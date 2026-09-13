@@ -48,7 +48,7 @@ Diseñada bajo estándares de seguridad de aplicaciones y una estética moderna 
 - Cambio ágil de perfiles de trabajo sin necesidad de re-iniciar sesión.
 
 ### 🛡️ 5. Seguridad Multicapa y Protección de Datos
-- **Criptografía Robusta:** Hashing criptográfico unidireccional SHA-256 para contraseñas.
+- **Protección de Credenciales:** Manejo seguro de credenciales y flujos de autenticación controlados.
 - **Protección Anti-CSRF/XSRF:** Tokens de verificación `RequestVerificationToken` implementados en todas las llamadas fetch/REST.
 - **Defensas Anti-IDOR:** Validación estricta en base de datos de la propiedad de cuentas, perfiles y órdenes en cada petición HTTP.
 - **Transaccionalidad ACID:** Procedimientos almacenados con bloques `BEGIN TRAN` y `COMMIT/ROLLBACK` para evitar registros huérfanos.

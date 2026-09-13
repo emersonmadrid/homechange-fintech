@@ -52,7 +52,7 @@ Inspired by industry leaders like **Wise** and **Stripe**, it delivers an intuit
 - Context-aware permissions ensuring data isolation across profiles.
 
 ### 🛡️ 5. Multi-Tier Application Security
-- **Cryptographic Storage:** SHA-256 cryptographic hashing for user authentication.
+- **Credential Protection:** Secure credential handling and protected authentication flows.
 - **Anti-CSRF / Anti-XSRF:** Strict `RequestVerificationToken` headers enforced across all AJAX/REST endpoints.
 - **Server-Side Authorization (Anti-IDOR):** Database-backed verification ensuring users can only read or mutate accounts, profiles, and orders they legitimately own.
 - **ACID Transactions:** T-SQL Stored Procedures structured with explicit `BEGIN TRAN`, `COMMIT`, and `ROLLBACK` blocks preventing orphan records.
