@@ -26,7 +26,7 @@ Traditional currency exchange platforms often struggle with legacy monolithic de
 
 **HomeChange** demonstrates an **enterprise architectural refactoring**: modernizing a legacy ASP.NET MVC monolithic application into a decoupled, high-performance **React 19 Single Page Application (SPA)** while preserving the rock-solid ACID transactional guarantees of **C# and SQL Server**.
 
-Inspired by industry leaders like **Wise** and **Stripe**, it delivers an intuitive, minimalist user experience without sacrificing banking-grade security or compliance requirements.
+Inspired by industry leaders like **Wise** and **Stripe**, it delivers an intuitive, minimalist user experience built upon robust security practices and data integrity.
 
 ---
 
@@ -51,8 +51,8 @@ Inspired by industry leaders like **Wise** and **Stripe**, it delivers an intuit
 - Seamless switching between **Personal Profile** (National ID / CE) and **Corporate Profile** (Tax ID / RUC / Legal Entity).
 - Context-aware permissions ensuring data isolation across profiles.
 
-### 🛡️ 5. Banking-Grade Security Architecture
-- **Cryptographic Storage:** One-way SHA-256 password hashing with zero plain-text exposure.
+### 🛡️ 5. Multi-Tier Application Security
+- **Cryptographic Storage:** SHA-256 cryptographic hashing for user authentication.
 - **Anti-CSRF / Anti-XSRF:** Strict `RequestVerificationToken` headers enforced across all AJAX/REST endpoints.
 - **Server-Side Authorization (Anti-IDOR):** Database-backed verification ensuring users can only read or mutate accounts, profiles, and orders they legitimately own.
 - **ACID Transactions:** T-SQL Stored Procedures structured with explicit `BEGIN TRAN`, `COMMIT`, and `ROLLBACK` blocks preventing orphan records.

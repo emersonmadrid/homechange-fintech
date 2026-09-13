@@ -22,7 +22,7 @@
 
 **HomeChange** resuelve el problema de las plataformas tradicionales de cambio de divisas: interfaces lentas, sistemas legados vulnerables y falta de transparencia. 
 
-Diseñada bajo estándares bancarios y una estética moderna inspirada en Stripe y Wise, combina la estabilidad transaccional de **C# y SQL Server** con la agilidad y reactividad de un **Frontend SPA moderno en React 19 y Tailwind CSS**.
+Diseñada bajo estándares de seguridad de aplicaciones y una estética moderna inspirada en Stripe y Wise, combina la estabilidad transaccional de **C# y SQL Server** con la agilidad y reactividad de un **Frontend SPA moderno en React 19 y Tailwind CSS**.
 
 ---
 
@@ -47,7 +47,7 @@ Diseñada bajo estándares bancarios y una estética moderna inspirada en Stripe
 - Soporte en una misma cuenta para operar como Persona Natural (DNI/CE) o Empresa (RUC/Razón Social).
 - Cambio ágil de perfiles de trabajo sin necesidad de re-iniciar sesión.
 
-### 🛡️ 5. Seguridad de Nivel Bancario
+### 🛡️ 5. Seguridad Multicapa y Protección de Datos
 - **Criptografía Robusta:** Hashing criptográfico unidireccional SHA-256 para contraseñas.
 - **Protección Anti-CSRF/XSRF:** Tokens de verificación `RequestVerificationToken` implementados en todas las llamadas fetch/REST.
 - **Defensas Anti-IDOR:** Validación estricta en base de datos de la propiedad de cuentas, perfiles y órdenes en cada petición HTTP.
