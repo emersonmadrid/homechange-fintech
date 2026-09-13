@@ -1,0 +1,40 @@
+@{
+    ViewBag.Title = "Dashboard Administrador";
+}
+
+<div class="row" style="margin-bottom: 30px;">
+    <div class="col-md-12">
+        <h2 style="color: var(--accent); font-weight: 700;">Panel de Resumen Gerencial</h2>
+        <p style="color: var(--text-secondary); font-size: 16px;">Bienvenido al Backoffice de Home Money. Selecciona una operación.</p>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Card 1: Tipo de Cambio -->
+    <div class="col-md-6" style="margin-bottom: 20px;">
+        <div class="glass-card" style="text-align: center;">
+            <div style="font-size: 40px; color: var(--accent); margin-bottom: 15px;">
+                <i class="glyphicon glyphicon-usd"></i>
+            </div>
+            <h3 style="margin-top:0;">Tipo de Cambio</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                Actualiza el tipo de cambio de compra y venta del día para los clientes.
+            </p>
+            <a href="@Url.Action("GestorTipoCambio", "Admin")" class="btn btn-accent" style="width: 100%;">Gestionar Tipo de Cambio</a>
+        </div>
+    </div>
+
+    <!-- Card 2: Órdenes -->
+    <div class="col-md-6" style="margin-bottom: 20px;">
+        <div class="glass-card" style="text-align: center;">
+            <div style="font-size: 40px; color: var(--accent); margin-bottom: 15px;">
+                <i class="glyphicon glyphicon-list-alt"></i>
+            </div>
+            <h3 style="margin-top:0;">Bandeja de Órdenes</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                Revisa y procesa las transferencias de divisas pendientes.
+            </p>
+            <a href="@Url.Action("BandejaOrdenes", "Admin")" class="btn btn-accent" style="width: 100%;">Bandeja de Órdenes Pendientes</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Home Money</title>
+    
+    <!-- React Vite Bundles -->
+    <link rel="stylesheet" href="@Url.Content("~/Scripts/react/assets/index.css")">
+    
+    <script>
+        var Session = {};
+    </script>
+</head>
+<body>
+    @Html.AntiForgeryToken()
+    <div id="ContenedorPanelControl"></div>
+
+    <script type="module" src="@Url.Content("~/Scripts/react/assets/index.js")"></script>
+</body>
+</html>

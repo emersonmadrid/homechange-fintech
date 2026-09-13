@@ -1,0 +1,3 @@
+@echo off
+echo Inyectando Procedimientos Almacenados faltantes...
+Powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0Actualizar_SP.ps1"

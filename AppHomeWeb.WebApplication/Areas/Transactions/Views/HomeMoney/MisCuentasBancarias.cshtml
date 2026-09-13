@@ -1,0 +1,12 @@
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    ViewBag.Title = "Mis cuentas bancarias";
+}
+
+<!-- React Vite Bundles -->
+<link rel="stylesheet" href="@Url.Content("~/Scripts/react/assets/index.css")">
+
+@Html.AntiForgeryToken()
+<div id="ContenedorMisCuentasBancarias"></div>
+
+<script type="module" src="@Url.Content("~/Scripts/react/assets/index.js")"></script>

@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HomeMoney</title>
+    
+    <!-- Limpiamos el CSS heredado que causaba "flasheos" de imágenes -->
+    @Scripts.Render("~/bundles/modernizr")
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>
+        var Session = {};
+    </script>
+    @Styles.Render("~/bundles/HomeMoneyStyles")
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- SIDEBAR -->
+        <aside class="dashboard-sidebar">
+            <a href="~/Transactions/HomeMoney/Transacciones" class="sidebar-brand">
+                Home<span>Money</span>
+            </a>
+            
+            <div class="sidebar-profile">
+                <img src="~/Areas/Transactions/Images/logo.jpg" alt="Perfil">
+                <h3>Usuario Cliente</h3>
+                <p>Mi Perfil</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="sidebar-nav-label">Panel de Usuario</div>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a id="btnCambiarAhora" href="~/Transactions/HomeMoney/CambiarAhora">
+                            <i class="fa fa-exchange"></i> Cambia ahora
+                        </a>
+                    </li>
+                    <li>
+                        <a id="btnOrdenCliente" href="~/Transactions/HomeMoney/OrdenCliente">
+                            <i class="fa fa-list-alt"></i> Mis ordenes
+                        </a>
+                    </li>
+                    <li>
+                        <a id="btnMisDatos" href="~/Transactions/HomeMoney/EditarCliente">
+                            <i class="fa fa-user"></i> Mis datos
+                        </a>
+                    </li>
+                    <li style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                        <a id="btnCambiarPerfil" href="~/Transactions/HomeMoney/SeleccionPerfil?force=1">
+                            <i class="fa fa-users"></i> Cambiar Perfil
+                        </a>
+                    </li>
+                    <li>
+                        <a id="btnCerrarSesion" href="#" onclick="sessionStorage.clear(); window.location.href='/Transactions/HomeMoney/Login'; return false;">
+                            <i class="fa fa-sign-out"></i> Cerrar Sesión
+                        </a>
+                    </li>
+                    <li>
+                        <a id="btnMiCuenta" href="~/Transactions/HomeMoney/MisCuentasBancarias">
+                            <i class="fa fa-bank"></i> Mis cuentas bancarias
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-nav-label">Soporte</div>
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fa fa-question-circle"></i> ¿Necesitas ayuda?</a></li>
+                    <li><a href="#"><i class="fa fa-phone"></i> (01) 7162518</a></li>
+                    <li><a href="#"><i class="fa fa-whatsapp"></i> 923 244 926</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+            <!-- HEADER -->
+            <header class="dashboard-header">
+                <a href="~/Transactions/HomeMoney/Login" class="header-logout">
+                    Cerrar Sesión <i class="fa fa-sign-out"></i>
+                </a>
+            </header>
+
+            <!-- CONTENT -->
+            <div class="dashboard-content">
+                @RenderBody()
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <p>HomeMoney &copy; @DateTime.Now.Year. Todos los derechos reservados.</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Scripts Esenciales -->
+    @Scripts.Render("~/bundles/HomeMoneyCore")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery-addon-home")
+    @Scripts.Render("~/bundles/HomeMoneyLib")
+    @RenderSection("scripts", required: false)
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var idPerfil = sessionStorage.getItem("idusuarioperfil");
+            var idUsuario = sessionStorage.getItem("idusuario");
+
+            if (!idUsuario && window.location.href.indexOf('Login') === -1 && window.location.href.indexOf('RegistrarCliente') === -1) {
+                window.location.href = '/Transactions/HomeMoney/Login';
+                return;
+            }
+
+            if (idPerfil) {
+                var links = document.querySelectorAll('.sidebar-menu a');
+                links.forEach(function (link) {
+                    var href = link.getAttribute('href');
+                    if (href && href !== '#' && href.indexOf('Login') === -1) {
+                        if (href.indexOf('idperfilusuario') === -1) {
+                            var param = href.indexOf('?') === -1 ? '?' : '&';
+                            link.setAttribute('href', href + param + 'idperfilusuario=' + idPerfil);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

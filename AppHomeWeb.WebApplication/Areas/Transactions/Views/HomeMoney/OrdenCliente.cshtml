@@ -1,0 +1,13 @@
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    ViewBag.Title = "Mis órdenes";
+}
+
+<!-- React Vite Bundles -->
+<link rel="stylesheet" href="@Url.Content("~/Scripts/react/assets/index.css")">
+
+@Html.AntiForgeryToken()
+<div id="ContenedorOrdenCliente"></div>
+<input type="hidden" name="hdidPerfilUsuario" id="hdidPerfilUsuario" value="@ViewBag.idperfilusuario" />
+
+<script type="module" src="@Url.Content("~/Scripts/react/assets/index.js")"></script>

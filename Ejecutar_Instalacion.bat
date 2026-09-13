@@ -1,0 +1,3 @@
+@echo off
+echo Inicializando configuracion de la base de datos...
+Powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0Instalar_BaseDeDatos.ps1"

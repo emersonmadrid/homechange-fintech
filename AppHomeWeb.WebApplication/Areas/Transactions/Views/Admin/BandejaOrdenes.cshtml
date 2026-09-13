@@ -1,0 +1,47 @@
+@{
+    ViewBag.Title = "Bandeja de Órdenes";
+}
+<h2>Órdenes Pendientes de Aprobación</h2>
+<hr />
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>N° Orden</th>
+            <th>Cliente</th>
+            <th>Monto Transferido</th>
+            <th>Voucher</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Iterar sobre ViewBag.Ordenes -->
+        <tr>
+            <td>ORD-12345</td>
+            <td>Juan Perez</td>
+            <td>S/ 3,750.00</td>
+            <td><a href="#" target="_blank">Ver Voucher.jpg</a></td>
+            <td><button class="btn btn-sm btn-success" onclick="aprobarOrden('ORD-12345')">Aprobar Depósito</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function aprobarOrden(numeroOrden) {
+        if(confirm("¿Estás seguro de que recibiste el dinero en el banco?")) {
+            fetch('@Url.Action("AprobarOrden", "Admin")', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'numeroOrden=' + numeroOrden
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success) {
+                    alert("Orden Aprobada. Se le enviará el dinero al cliente.");
+                    location.reload();
+                } else {
+                    alert("Error");
+                }
+            });
+        }
+    }
+</script>

@@ -1,0 +1,37 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regístrate - Home Money</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+    <!-- React Vite Bundles -->
+    <link rel="stylesheet" href="@Url.Content("~/Scripts/react/assets/index.css")">
+    
+    <script>
+        var Session = {};
+    </script>
+</head>
+<body style="background: #F4F7F9; min-height: 100vh; margin: 0;">
+    @Html.AntiForgeryToken()
+    <div id="ContenedorRegistrarCliente"></div>
+    
+    <!-- React Vite Scripts -->
+    <script type="module" src="@Url.Content("~/Scripts/react/assets/index.js")"></script>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
