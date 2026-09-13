@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpDown } from 'lucide-react';
+import { useI18n } from './i18n/LanguageContext';
+import { LanguageToggle } from './components/LanguageToggle';
 
 const LandingPage: React.FC = () => {
+  const { t } = useI18n();
   const [sourceAmount, setSourceAmount] = useState<string>('');
   const [targetAmount, setTargetAmount] = useState<string>('');
   const [isSolesToDollars, setIsSolesToDollars] = useState(true);
@@ -34,24 +37,29 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen lg:h-screen w-full bg-[#f8fafc] flex flex-col lg:flex-row font-sans">
+    <div className="min-h-screen lg:h-screen w-full bg-[#f8fafc] flex flex-col lg:flex-row font-sans relative">
       
+      {/* Floating Language Switcher */}
+      <div className="absolute top-6 right-6 z-50">
+        <LanguageToggle />
+      </div>
+
       {/* LEFT SIDE: Hero Text */}
       <div className="w-full lg:w-1/2 bg-primary flex flex-col justify-center px-8 py-16 lg:px-16 xl:px-24 text-white">
         <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6">
-          Cambia dólares <br/> online al instante.
+          {t('landing.hero_title')}
         </h1>
         <p className="text-lg text-blue-100 font-medium mb-8 max-w-md">
-          El mejor tipo de cambio en Perú. Rápido, seguro y sin salir de casa.
+          {t('landing.hero_subtitle')}
         </p>
         
         <div className="flex gap-8">
           <div>
-            <p className="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-1">Compra</p>
+            <p className="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-1">{t('landing.buy')}</p>
             <p className="text-3xl font-bold">{buyRate.toFixed(3)}</p>
           </div>
           <div>
-            <p className="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-1">Venta</p>
+            <p className="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-1">{t('landing.sell')}</p>
             <p className="text-3xl font-bold">{sellRate.toFixed(3)}</p>
           </div>
         </div>
@@ -61,12 +69,12 @@ const LandingPage: React.FC = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 py-12 lg:py-8">
         <div className="w-full max-w-sm bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-8 border border-gray-100 relative">
           
-          <h2 className="text-xl font-bold text-gray-800 mb-6 text-center">Calcula tu cambio</h2>
+          <h2 className="text-xl font-bold text-gray-800 mb-6 text-center">{t('landing.calc_title')}</h2>
 
           <div className="space-y-4 relative">
             {/* ENVÍAS */}
             <div className="bg-gray-50 p-3 rounded-2xl border border-gray-200 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
-              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">Tú envías</label>
+              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">{t('landing.you_send')}</label>
               <div className="flex items-center justify-between">
                 <input
                   type="number"
@@ -95,7 +103,7 @@ const LandingPage: React.FC = () => {
 
             {/* RECIBES */}
             <div className="bg-gray-50 p-3 rounded-2xl border border-gray-200">
-              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">Tú recibes</label>
+              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">{t('landing.you_receive')}</label>
               <div className="flex items-center justify-between">
                 <input
                   type="text"
@@ -115,11 +123,11 @@ const LandingPage: React.FC = () => {
             onClick={handleLoginRedirect}
             className="w-full mt-8 bg-primary hover:bg-blue-700 text-white font-bold text-lg py-3 rounded-xl shadow-lg shadow-primary/30 transition-all hover:-translate-y-0.5"
           >
-            Iniciar Operación
+            {t('landing.start_op')}
           </button>
 
           <p className="text-center text-xs font-medium text-gray-400 mt-4">
-            Tipo de cambio referencial.
+            {t('landing.rate_note')}
           </p>
         </div>
       </div>

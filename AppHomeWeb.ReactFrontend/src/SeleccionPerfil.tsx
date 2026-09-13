@@ -1,3 +1,5 @@
+import { useI18n } from './i18n/LanguageContext';
+import { LanguageToggle } from './components/LanguageToggle';
 import React, { useState, useEffect } from 'react';
 import { Building2, User, Plus, ChevronRight, X, Loader2, LogOut } from 'lucide-react';
 
@@ -7,6 +9,7 @@ interface Perfil {
 }
 
 export default function SeleccionPerfil() {
+  const { t } = useI18n();
   const [perfiles, setPerfiles] = useState<Perfil[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -124,24 +127,25 @@ export default function SeleccionPerfil() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-12 px-4 font-sans selection:bg-blue-100">
-      {/* Logout Button */}
-      <div className="w-full max-w-4xl flex justify-end mb-8">
+      {/* Top Bar: Language Switcher and Logout */}
+      <div className="w-full max-w-4xl flex justify-between items-center mb-8">
+        <LanguageToggle />
         <button 
           onClick={handleLogout}
           className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-600 bg-white border border-gray-200 rounded-full hover:bg-gray-50 hover:text-red-600 hover:border-red-200 transition-all shadow-sm"
         >
           <LogOut className="w-4 h-4" />
-          Cerrar Sesión
+          {t('btn.logout')}
         </button>
       </div>
 
       <div className="max-w-4xl w-full space-y-12">
         <div className="text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
-            ¿Con qué perfil operarás hoy?
+            {t('profile.select_title')}
           </h1>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto font-medium">
-            Selecciona tu perfil personal o de empresa para continuar a tu panel de control.
+            {t('profile.select_desc')}
           </p>
         </div>
 

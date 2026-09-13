@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { LanguageProvider } from './i18n/LanguageContext.tsx'
 import LandingPage from './LandingPage.tsx'
 import App from './App.tsx'
 import SeleccionPerfil from './SeleccionPerfil.tsx'
@@ -19,7 +20,9 @@ const mount = (id: string, Component: React.ComponentType) => {
   if (root) {
     ReactDOM.createRoot(root).render(
       <React.StrictMode>
-        <Component />
+        <LanguageProvider>
+          <Component />
+        </LanguageProvider>
       </React.StrictMode>,
     );
   }
@@ -37,12 +40,13 @@ mount('ContenedorOrdenCliente', OrdenCliente);
 mount('ContenedorRegistrarCliente', RegistrarCliente);
 mount('ContenedorPanelGerente', PanelGerente);
 
-
 const landingRoot = document.getElementById('LandingRoot');
 if (landingRoot) {
   ReactDOM.createRoot(landingRoot).render(
     <React.StrictMode>
-      <LandingPage />
+      <LanguageProvider>
+        <LandingPage />
+      </LanguageProvider>
     </React.StrictMode>,
   )
 }
